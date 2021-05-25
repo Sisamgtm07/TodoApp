@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import TodoList from "./TodoList"
+import TodoList from "./TodoList";
+import Greeting from "./Greeting";
 
 const App = () => {
 
@@ -29,10 +30,7 @@ const App = () => {
     <>
         <div className = "todo">
           <div className = "todo__card">
-              <p className = "todo__detail">Your Daily Planner</p>
-              <p className = "todo__greet">Good Morning, Sisam</p>
-              <p className = "todo__date">Today Date</p>
-              
+                <Greeting/>
               <div className = "todo__list">
                   <input type = "text" placeholder = "Add a Items" onChange = {addList} value = {inputList}/>
                   <button onClick = {addedList}> <i class="fas fa-plus"></i> </button>
