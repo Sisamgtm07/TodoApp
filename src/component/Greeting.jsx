@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Greeting(){
-      let greetingTime = new Date().getHours();
-      let greetingHr = greetingTime % 12;
-      let greetingMin = new Date().getMinutes();
-      let greetingPart = '';
-      let period = '';
-      const cssStyle = {}
-        if(greetingTime >= 1 && greetingTime <= 11){
+  let time = new Date().toLocaleTimeString();
+  const [currentTime, setTime] = useState(time);
+  const updateTime = () =>{
+  time = new Date().toLocaleTimeString();
+  setTime(`${time}`)
+  }
+  setInterval(updateTime, 1000);  
+  
+  const colon = ":";
+  let splitTime = time.split(colon);
+  let period = splitTime[0];
+  let greetingPart = ''
+        if(period >= 1 && period <= 11){
           greetingPart = "Good Morning";
-        period = "AM";
+          period = "AM";
         }
-        else if(greetingTime >= 12 && greetingTime <= 19){
+        else if(period >= 12 && period <= 19){
           greetingPart = "Good Afternoon";
         period = "PM";
       }
@@ -25,7 +31,7 @@ function Greeting(){
           <>
              <p className = "todo__detail">Your Daily Planner</p>
               <p className = "todo__greet">{greetingPart}, Sisam</p>
-              <p className = "todo__date">{greetingHr}:{greetingMin} {period}</p>
+              <p className = "todo__date">{currentTime} {period}</p>
     </>
     
       );
